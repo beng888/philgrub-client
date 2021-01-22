@@ -77,7 +77,7 @@ const AccountDetails = () => {
           label={"display name"}
           required
         />
-        <p className="text-xs transform -translate-y-4 italic tracking-widest">
+        <p className="text-xs transform italic tracking-widest">
           This will be how your name will be displayed in the account section
           and in reviews
         </p>

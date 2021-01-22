@@ -18,6 +18,8 @@ import Loader from "./components/Loader";
 const App = () => {
   // console.log(process.env.REACT_APP_MAILCHIMP_URL);
   // console.log(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
+  console.log(process.env.REACT_APP_URL);
+  console.log(process.env.NODE_ENV);
 
   return (
     <Router>

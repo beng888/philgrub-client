@@ -65,6 +65,9 @@ const CartItems = ({ cart }) => {
     checkoutTotal: total,
     checkoutQuantity: 1,
     checkoutCart: updatedCart,
+    time: new Date().toLocaleString("en-US", {
+      timeZone: "Asia/Manila",
+    }),
   });
   const { checkoutWeekly, checkoutQuantity } = checkout;
 

@@ -26,7 +26,7 @@ const Intro = () => {
         }`}
       >
         Philiber’s locally made, mouth-watering and hearty prepared and bistro
-        meals will give you an entirely new appreciation for Quebec’s
+        meals will give you an entirely new appreciation for Manila's
         world-class food scene. Refined yet comforting meals delivered straight
         to your door every Tuesday.
       </p>

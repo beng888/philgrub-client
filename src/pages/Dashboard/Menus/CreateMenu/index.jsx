@@ -78,7 +78,7 @@ const CreateMenu = () => {
   };
 
   return (
-    <div className="px-8 sm:px-16 lg:px-32 w-full">
+    <div className="padding w-full">
       <form
         autoComplete="off"
         onSubmit={handleSubmit}
