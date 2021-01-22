@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import FormField from "../../../../components/FormField";
 import Button from "../../../../components/Button";
 import { createDelivery, deleteDelivery } from "../../../../actions/delivery";
-import { useDispatch, useSelector } from "react-redux";
 
 const Delivery = () => {
   const dispatch = useDispatch();

@@ -1,10 +1,11 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
-import Button from "../../../components/Button";
 
+import Button from "../../../components/Button";
 import UserOrders from "./UserOrders";
 import AdminOrders from "./AdminOrders";
+
 const Orders = () => {
   const location = useLocation();
   const path = location.pathname;

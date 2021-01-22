@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router";
 
 import { updateUser } from "../../../actions/auth";
 import FormField from "../../../components/FormField";
 import Button from "../../../components/Button";
-import { useNavigate } from "react-router";
 
 const AccountDetails = () => {
   const { user } = useSelector((state) => state.auth);

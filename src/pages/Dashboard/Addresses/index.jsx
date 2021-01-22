@@ -4,11 +4,6 @@ import { useSelector } from "react-redux";
 
 import Button from "../../../components/Button";
 
-const address = [
-  ["Billing address", "/dashboard/addresses/billing"],
-  ["Shipping address", "/dashboard/addresses/shipping"],
-];
-
 const Addresses = () => {
   const { user } = useSelector((state) => state.auth);
   const { guest } = useSelector((state) => state.guest);

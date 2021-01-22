@@ -1,10 +1,10 @@
 import React from "react";
-import Bubble from "../ContactUs/Bubble";
+import { Link } from "react-router-dom";
 
+import Bubble from "../ContactUs/Bubble";
 import { faq } from "../../static";
 import Faqs from "./Faqs";
 import Button from "../../components/Button";
-import { Link } from "react-router-dom";
 
 console.log(faq);
 const Faq = () => {

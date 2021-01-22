@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 import { sitemap } from "../../static";
+
 const SiteMap = () => {
   const menus = useSelector((state) => state.menus);
   return (

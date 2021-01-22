@@ -6,7 +6,6 @@ import { createMenu, updateMenu } from "../../../../actions/menu";
 import { setCurrentId } from "../../../../actions/variables";
 import Button from "../../../../components/Button";
 import UploadImage from "./UploadImage";
-
 import FormField from "../../../../components/FormField";
 import Dropdown from "./Dropdown";
 import { SET_ERRORS } from "../../../../actions/actionTypes";

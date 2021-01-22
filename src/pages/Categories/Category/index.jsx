@@ -1,18 +1,16 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import Caption from "./Caption";
 import { Link, useParams } from "react-router-dom";
 import AddToCart from "./AddToCart";
 
-import { updateCart, groupBy } from "../../../helpers";
+import { groupBy } from "../../../helpers";
 import Button from "../../../components/Button";
-import { addToCart } from "../../../actions/auth";
 import Content from "./Content";
 
 const Category = () => {
   const menus = useSelector((state) => state.menus);
   const { category } = useParams();
-  const dispatch = useDispatch();
   console.log(category);
 
   const menuCategory = groupBy(menus, "category");

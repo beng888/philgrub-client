@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useLocation, useNavigate } from "react-router";
 
 import FormField from "../../../components/FormField";
 import Button from "../../../components/Button";
 import { cityOptions } from "../../../static";
 import { setShippingAddress } from "../../../actions/auth";
-import { useLocation, useNavigate } from "react-router";
 import { setAlert } from "../../../actions/alert";
 
 const Shipping = () => {

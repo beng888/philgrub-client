@@ -1,4 +1,5 @@
 import React from "react";
+
 import Bubble from "../ContactUs/Bubble";
 
 const PrivacyPolicies = () => {

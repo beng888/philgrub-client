@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { createMessage } from "../../actions/message";
 import FormField from "../../components/FormField";
 import Button from "../../components/Button";
-// import bg from "../../images/contact-bg.jpg";
 
 const Contact = () => {
   const dispatch = useDispatch();

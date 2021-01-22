@@ -3,7 +3,6 @@ import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import { logoutUser } from "../../actions/auth";
-
 import { dashboardLinks } from "../../static";
 
 const Navigation = () => {

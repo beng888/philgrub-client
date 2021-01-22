@@ -5,6 +5,7 @@ import { Link, useParams } from "react-router-dom";
 import Button from "../../../components/Button";
 import Loader from "../../../components/Loader";
 import Caption from "../Category/Caption";
+
 const CategoryItem = () => {
   const menus = useSelector((state) => state.menus);
   const [open, setOpen] = useState(false);
