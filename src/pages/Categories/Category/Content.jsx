@@ -20,10 +20,8 @@ const Content = ({ food, cart, setCart }) => {
     currentItem = null;
   }
 
-  console.log(currentItem);
-
   return (
-    <div className="flex flex-col justify-between">
+    <div className="flex flex-col justify-between text-center sm:text-left">
       {" "}
       <Link to={`/categories/${food.category}/${food.title}`}>
         {showImage ? (
