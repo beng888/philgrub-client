@@ -23,7 +23,7 @@ const Body = ({ item, cart, guest_cart, setUpdatedCart, setForUpdate }) => {
               className="hidden md:block"
               width="100"
             />
-            <p className="text-sm">{item.title}</p>
+            <p className="text-sm max-w-14-rem">{item.title}</p>
           </div>
         </Link>
       </div>

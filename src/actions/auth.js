@@ -104,7 +104,6 @@ export const setBillingAddress = (userInfo) => async (dispatch) => {
   try {
     const res = await API.post("/auth/billingAddress", userInfo);
     dispatch({ type: SET_BILLING_ADDRESS, payload: userInfo });
-    dispatch(setAlert("billing address successfuly updated"));
 
     console.log(res);
   } catch (error) {
@@ -121,7 +120,6 @@ export const setShippingAddress = (userInfo) => async (dispatch) => {
   try {
     const res = await API.post("/auth/shippingAddress", userInfo);
     dispatch({ type: SET_SHIPPING_ADDRESS, payload: userInfo });
-    dispatch(setAlert("shipping address successfuly updated"));
 
     console.log(res);
   } catch (error) {

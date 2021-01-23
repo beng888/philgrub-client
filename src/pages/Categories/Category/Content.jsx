@@ -23,7 +23,7 @@ const Content = ({ food, cart, setCart }) => {
   console.log(currentItem);
 
   return (
-    <div>
+    <div className="flex flex-col justify-between">
       {" "}
       <Link to={`/categories/${food.category}/${food.title}`}>
         {showImage ? (
@@ -43,43 +43,47 @@ const Content = ({ food, cart, setCart }) => {
             `x ${currentItem.quantity}`}{" "}
         </h3>{" "}
       </Link>
-      <Button
-        btn="btn-primary-sm"
-        onClick={() => updateCart(cart, setCart, food)}
-      >
-        <p className="text-xs flex items-center gap-x-2">
+      <div>
+        <Button
+          btn="btn-primary-sm"
+          onClick={() => updateCart(cart, setCart, food)}
+        >
+          <p className="text-xs flex items-center gap-x-2">
+            {currentItem ? (
+              <i className="fas fa-times" />
+            ) : (
+              <i className="fas fa-check" />
+            )}{" "}
+            ADD FOR ₱{" "}
+            {food.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}.00
+          </p>{" "}
+        </Button>
+        <div
+          className={`text-secondary transform trans-out  ${
+            currentItem
+              ? "translate-y-0 opacity-100"
+              : "translate-y-12 opacity-0"
+          }`}
+        >
+          {" "}
+          <label htmlFor="quantity" className="text-xs tracking-widest">
+            QTY:
+          </label>
+          &nbsp;{" "}
           {currentItem ? (
-            <i className="fas fa-times" />
+            <input
+              type="number"
+              min={0}
+              value={currentItem.quantity}
+              id="quantity"
+              className="border-b outline-none w-20 text-center p-2"
+              onChange={(e) => updateCart(cart, setCart, currentItem, e)}
+            />
           ) : (
-            <i className="fas fa-check" />
+            <br />
           )}{" "}
-          ADD FOR ₱{" "}
-          {food.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}.00
-        </p>{" "}
-      </Button>
-      <div
-        className={`text-secondary transform trans-out  ${
-          currentItem ? "translate-y-0 opacity-100" : "translate-y-12 opacity-0"
-        }`}
-      >
-        {" "}
-        <label htmlFor="quantity" className="text-xs tracking-widest">
-          QTY:
-        </label>
-        &nbsp;{" "}
-        {currentItem ? (
-          <input
-            type="number"
-            min={0}
-            value={currentItem.quantity}
-            id="quantity"
-            className="border-b outline-none w-20 text-center p-2"
-            onChange={(e) => updateCart(cart, setCart, currentItem, e)}
-          />
-        ) : (
           <br />
-        )}{" "}
-        <br />
+        </div>
       </div>
     </div>
   );
