@@ -31,7 +31,7 @@ const Cart = () => {
           <div
             className={`${
               cart.length > 0 ? "success" : "warning"
-            } flex flex-col sm:flex-row`}
+            } flex flex-col sm:flex-row  text-center`}
           >
             {cart.length > 0 ? (
               <div>

@@ -37,9 +37,12 @@ export const iconlinks = [
 ];
 
 export const socials = [
-  "fab fa-facebook-f",
-  "fab fa-instagram",
-  "fab fa-linkedin-in",
+  ["fab fa-facebook-f", "https://www.facebook.com/garamboody/"],
+  ["fab fa-github", "https://github.com/beng888"],
+  [
+    "fab fa-linkedin-in",
+    "https://www.linkedin.com/in/lawrence-jason-ardosa-470250176/",
+  ],
 ];
 
 export const sub = [

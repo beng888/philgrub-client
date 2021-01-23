@@ -35,7 +35,7 @@ const CategoryItem = () => {
                   className={`px-1 mx-1  center-content cursor-pointer hover:opacity-50 border-2 rounded-full relative`}
                 >
                   <i className={`fas ${c.logo} text-2xl`} />
-                  <p className="font-semibold text-white  z-10 text-shadow-black-solid absolute">
+                  <p className="font-semibold text-white  text-shadow-black-solid absolute">
                     {c.amount}
                   </p>
                 </div>

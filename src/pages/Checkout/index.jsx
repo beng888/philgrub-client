@@ -47,9 +47,9 @@ const Checkout = () => {
           {checkout && !checkout.hasOwnProperty("checkoutTotal") ? (
             <div
               className="border-tertiary text-tertiary
-     flex items-center justify-between  w-full text-xs tracking-widest bg-gray-100 py-2 px-4"
+              flex flex-col sm:flex-row items-center justify-between  w-full text-xs tracking-widest bg-gray-100 py-2 px-4"
             >
-              <div>
+              <div className="text-center">
                 <i className="far fa-calendar" />{" "}
                 <span>
                   &nbsp;Checkout is not available whilst your cart is empty

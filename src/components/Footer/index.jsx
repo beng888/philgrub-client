@@ -49,7 +49,9 @@ const Footer = () => {
         </div>
         <div className="flex justify-between gap-20">
           {socials.map((icon, i) => (
-            <i key={i} className={icon} />
+            <a key={i} href={icon[1]} target="_blank" rel="noreferrer">
+              <i className={icon[0]} />
+            </a>
           ))}
         </div>
       </div>
