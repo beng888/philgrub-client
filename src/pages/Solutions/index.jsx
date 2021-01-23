@@ -44,7 +44,7 @@ const Solutions = () => {
           </h2>
           <div className={`delay-out-2 hide ${inView && "show"}`}>
             <p className="leading-8 my-4">
-              Philiber has developed 2 solutions to fill your daily menus of
+              PhilGrub has developed 2 solutions to fill your daily menus of
               healthy meals and quality food. Whether it is prepared meals or
               bistro meals , each option is thought out to allow you to eat a
               balanced diet, save time and buy local.

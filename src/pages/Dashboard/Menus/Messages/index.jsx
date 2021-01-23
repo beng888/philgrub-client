@@ -25,7 +25,14 @@ const Messages = () => {
               {m.contact_message}
             </p>
             <div className=" text-right">
-              <p>{m.contact_phone}</p>
+              <p
+                onClick={() => window.open(`tel:${m.contact_phone}`)}
+                className="hov-link-text"
+                title="Call"
+              >
+                {m.contact_phone}
+              </p>
+
               <div>
                 <i
                   className="fas fa-reply"

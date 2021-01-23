@@ -18,7 +18,7 @@ const Footer = () => {
         </div>
         <div className="flex flex-col md:flex-row gap-8 md:gap-12 md:mx-auto">
           <p className="max-w-xl tracking-widest text-sm leading-7">
-            Philiber Food Solution, your prepared meals and Bistro meals
+            PhilGrub Food Solution, your prepared meals and Bistro meals
             subscription service delivered to your door every week. Save more
             time and offer yourself the finer things in life and in the kitchen.
           </p>

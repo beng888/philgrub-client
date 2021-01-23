@@ -15,7 +15,7 @@ const Intro = () => {
           inView && "show"
         }`}
       >
-        Running out of meal ideas? Philiber has you covered.
+        Running out of meal ideas? PhilGrub has you covered.
       </h2>
       <h5 className={`delay-out-2 tracking-widest hide ${inView && "show"}`}>
         Prepared meals that bring back the joy of eating.
@@ -25,7 +25,7 @@ const Intro = () => {
           inView && "show"
         }`}
       >
-        Philiber’s locally made, mouth-watering and hearty prepared and bistro
+        PhilGrub's locally made, mouth-watering and hearty prepared and bistro
         meals will give you an entirely new appreciation for Manila's
         world-class food scene. Refined yet comforting meals delivered straight
         to your door every Tuesday.
