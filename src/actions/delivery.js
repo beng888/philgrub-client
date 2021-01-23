@@ -37,7 +37,7 @@ export const createDelivery = (deliveryData) => async (dispatch) => {
 
 export const deleteDelivery = (id) => async (dispatch) => {
   try {
-    const { data } = await API.delete(`deliveries/${id}`);
+    const { data } = await API.delete(`/deliveries/${id}`);
     console.log(data);
     dispatch({ type: DELETE_DELIVERY, payload: id });
     dispatch(setAlert("delivery location deleted"));

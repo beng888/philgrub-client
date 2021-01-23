@@ -73,6 +73,9 @@ const Checkout = () => {
                   name={"coupon"}
                   label={"If you have a coupon code, please apply it below."}
                   placeholder={"Coupon code"}
+                  minLength="7"
+                  maxLength="15"
+                  required
                 />
                 <div className="text-right">
                   <Button btn="btn-secondary">Apply Coupon</Button>

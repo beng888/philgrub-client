@@ -29,14 +29,7 @@ const Form = ({ setOpen }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(createMessage(messageData));
-    setMessageData({
-      contact_name: "",
-      contact_email: "",
-      contact_subject: "",
-      contact_message: "",
-    });
-    setOpen(false);
+    dispatch(createMessage(messageData, setMessageData));
   };
   return (
     <>
@@ -91,6 +84,7 @@ const Form = ({ setOpen }) => {
           value={contact_message}
           name="contact_message"
           id="message"
+          minLength="20"
           required
         />
         <h5 className="text-red-600 text-xs">

@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { setAlert } from "../../../actions/alert";
 
 import Button from "../../../components/Button";
 import Updating from "../../../components/Loader/Updating";
@@ -11,18 +13,33 @@ const Total = ({
   forUpdate,
   updating,
 }) => {
+  const dispatch = useDispatch();
+  const [coupon, setCoupon] = useState("");
+
+  const submitCoupon = (e) => {
+    e.preventDefault();
+    dispatch(setAlert(`Coupon "${coupon}" does not exist!`, "error"));
+  };
   return (
     <div className="flex flex-col md:flex-row md:gap-x-20 text-primary tracking-widest justify-between mt-4 ">
-      <div className="flex flex-col gap-3 sm:gap-0 sm:flex-row h-fit sm:max-w-md justify-between text-xs text-gray-300 items-center sm:border">
+      <form
+        onSubmit={(e) => submitCoupon(e)}
+        className="flex flex-col gap-3 sm:gap-0 sm:flex-row h-fit sm:max-w-md justify-between text-xs text-gray-300 items-center sm:border"
+      >
         <input
           type="text"
           placeholder="Coupon code"
+          value={coupon}
+          onChange={(e) => setCoupon(e.target.value)}
           className=" py-5 px-4 sm:py-0 h-6 border sm:border-0 w-full sm:w-fit outline-none text-gray-500 sm:border-r border-gray-300 tracking-widest"
+          minLength="7"
+          maxLength="15"
+          required
         />
         <button className="flex-1 border sm:border-0 border-gray-300 w-full sm:w-fit text-tertiary tracking-widest font-semibold py-3 px-4 transform trans-out hover:bg-third hover:text-gray-200">
           APPLY COUPON
         </button>
-      </div>
+      </form>
       <div className="flex flex-col flex-grow md:max-w-xl relative">
         {" "}
         <div className="md:w-fit md:ml-auto">

@@ -1,21 +1,17 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import FormField from "../../../components/FormField";
 import Button from "../../../components/Button";
 import { cityOptions } from "../../../static";
 import { setBillingAddress } from "../../../actions/auth";
 import { SET_ERRORS } from "../../../actions/actionTypes";
-import { setAlert } from "../../../actions/alert";
 
 const Billing = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  let location = useLocation();
-  const path = location.pathname;
 
-  const { errors } = useSelector((state) => state.errors);
   const { guest } = useSelector((state) => state.guest);
   const { user } = useSelector((state) => state.auth);
   const guest_billingAddress = JSON.parse(
@@ -29,15 +25,15 @@ const Billing = () => {
     : guest.guest_billingAddress;
 
   const [userInfo, setUserInfo] = useState({
-    billing_firstName: billingAddress?.billing_firstName || "",
-    billing_lastName: billingAddress?.billing_lastName || "",
-    billing_companyName: billingAddress?.billing_companyName || "",
-    billing_houseAddress: billingAddress?.billing_houseAddress || "",
-    billing_apartmentAddress: billingAddress?.billing_apartmentAddress || "",
-    billing_postalCode: billingAddress?.billing_postalCode || "",
-    billing_phone: billingAddress?.billing_phone || "",
-    billing_email: billingAddress?.billing_email || "",
-    billing_townCity: billingAddress?.billing_apartmentAddress || "Manila",
+    billing_firstName: billingAddress?.billing_firstName ?? "",
+    billing_lastName: billingAddress?.billing_lastName ?? "",
+    billing_companyName: billingAddress?.billing_companyName ?? "",
+    billing_houseAddress: billingAddress?.billing_houseAddress ?? "",
+    billing_apartmentAddress: billingAddress?.billing_apartmentAddress ?? "",
+    billing_postalCode: billingAddress?.billing_postalCode ?? "",
+    billing_phone: billingAddress?.billing_phone ?? "",
+    billing_email: billingAddress?.billing_email ?? "",
+    billing_townCity: billingAddress?.billing_apartmentAddress ?? "Manila",
   });
 
   const onChange = (e) => {
@@ -50,20 +46,10 @@ const Billing = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch({ type: SET_ERRORS, payload: null });
-    console.log(errors);
 
     dispatch(setBillingAddress(userInfo, navigate));
   };
 
-  // const isFirstRun = useRef(true);
-  // useEffect(() => {
-  //   if (isFirstRun.current) {
-  //     isFirstRun.current = false;
-  //     return;
-  //   }
-  //   errors === null &&
-  //     dispatch(setAlert("billing address successfuly updated"));
-  // }, [handleSubmit]);
   return (
     <form
       autoComplete="off"
@@ -103,7 +89,7 @@ const Billing = () => {
         name={"billing_houseAddress"}
         label={"House address"}
         placeholder={"House number and street name"}
-        minlength="20"
+        minLength="20"
         required
       />{" "}
       <FormField
@@ -146,7 +132,7 @@ const Billing = () => {
         required
       />
       <span className="text-xs transform -translate-y-5 ">
-        Format: <b className="text-gray-500 trac">09#########</b>
+        Format: <b className="text-gray-500 tracking-widest">09#########</b>
       </span>
       <FormField
         value={userInfo.billing_email}

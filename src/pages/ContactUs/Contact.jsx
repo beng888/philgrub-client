@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useInView } from "react-intersection-observer";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import { createMessage } from "../../actions/message";
 import FormField from "../../components/FormField";
@@ -8,19 +8,25 @@ import Button from "../../components/Button";
 
 const Contact = () => {
   const dispatch = useDispatch();
-  const { errors } = useSelector((state) => state.errors);
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.4 });
-  const isFirstRun = useRef(true);
 
-  const initial_state = {
+  const [messageData, setMessageData] = useState({
     contact_name: "",
     contact_email: "",
     contact_phone: "",
     contact_subject: "",
     contact_message: "",
-  };
+  });
 
-  const [messageData, setMessageData] = useState(initial_state);
+  console.log(messageData);
+
+  const {
+    contact_name,
+    contact_email,
+    contact_phone,
+    contact_subject,
+    contact_message,
+  } = messageData;
 
   const onChange = (e) => {
     setMessageData({
@@ -31,16 +37,9 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(createMessage(messageData));
+    dispatch(createMessage(messageData, setMessageData));
   };
 
-  useEffect(() => {
-    if (isFirstRun.current) {
-      isFirstRun.current = false;
-      return;
-    }
-    errors === null && setMessageData(initial_state);
-  }, [handleSubmit]);
   return (
     <div className=" min-h-screen center-content text-gray-200 padding relative">
       <img
@@ -63,53 +62,64 @@ const Contact = () => {
           <div className="flex flex-col md:flex-row gap-x-6 text-shadow-black-solid">
             {" "}
             <FormField
-              value={messageData.contact_name}
+              value={contact_name}
               onChange={onChange}
               type={"text"}
               name={"contact_name"}
-              required
               label="Full name"
               text="text-gray-200"
+              required
             />
             <FormField
-              value={messageData.contact_email}
+              value={contact_email}
               onChange={onChange}
               type={"email"}
               name={"contact_email"}
-              required
               label="E-mail"
               text="text-gray-200"
+              required
             />
           </div>
           <div className="flex flex-col md:flex-row gap-x-6">
             {" "}
+            <div className="w-full">
+              <FormField
+                value={contact_phone}
+                onChange={onChange}
+                type={"tel"}
+                name={"contact_phone"}
+                label="Phone"
+                text="text-gray-200"
+                pattern="[0]{1}[9]{1}[0-9]{9}"
+                maxLength="11"
+                title="cellphone number"
+                required
+              />
+              <span className="text-xs transform -translate-y-5 absolute ">
+                Format:{" "}
+                <b className="text-gray-400 tracking-widest">09#########</b>
+              </span>
+            </div>
             <FormField
-              value={messageData.contact_phone}
-              onChange={onChange}
-              type={"number"}
-              name={"contact_phone"}
-              label="Phone"
-              text="text-gray-200"
-            />
-            <FormField
-              value={messageData.contact_subject}
+              value={contact_subject}
               onChange={onChange}
               type={"text"}
               name={"contact_subject"}
-              required
               label="Subject"
               text="text-gray-200"
+              required
             />
           </div>
 
           <FormField
-            value={messageData.contact_message}
+            value={contact_message}
             onChange={onChange}
             type={"textarea"}
             name={"contact_message"}
-            required
             label="Message"
             text="text-gray-200"
+            minLength="20"
+            required
           />
           <div className="text-right">
             <Button btn="btn-secondary">SEND</Button>

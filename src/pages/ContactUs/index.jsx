@@ -11,7 +11,7 @@ const ContactUs = () => {
         <img
           src="/images/boy-on-phone.jpg"
           alt="boy-on-phone.jpg"
-          className=" min-w-max h-560"
+          className="w-full object-cover h-560"
         />
         <Bubble />
         <div className="absolute bg-white w-full h-24 bottom-0 sm:hidden " />

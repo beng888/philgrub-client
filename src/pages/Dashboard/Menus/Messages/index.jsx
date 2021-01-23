@@ -20,23 +20,26 @@ const Messages = () => {
             <p className="text-center lg:hidden">{m.contact_subject}</p>
           </div>
 
-          <div className=" p-4 bg-gray-200 border-b scale-from-top ">
-            <p className=" break-all whitespace-pre-wrap">
+          <div className="flex gap-4 p-4 bg-gray-200 border-b scale-from-top ">
+            <p className=" break-all whitespace-pre-wrap  w-full">
               {m.contact_message}
             </p>
-            <div className="w-full text-right">
-              <i
-                className="fas fa-reply"
-                onClick={() => window.open(`mailto:${m.contact_email}`)}
-                title="Reply"
-              />
-              <i
-                className="fas fa-trash-alt ml-4"
-                title="Delete"
-                onClick={() => {
-                  dispatch(deleteMessage(m._id));
-                }}
-              />
+            <div className=" text-right">
+              <p>{m.contact_phone}</p>
+              <div>
+                <i
+                  className="fas fa-reply"
+                  onClick={() => window.open(`mailto:${m.contact_email}`)}
+                  title="Reply"
+                />
+                <i
+                  className="fas fa-trash-alt ml-4"
+                  title="Delete"
+                  onClick={() => {
+                    dispatch(deleteMessage(m._id));
+                  }}
+                />
+              </div>
             </div>
           </div>
         </div>

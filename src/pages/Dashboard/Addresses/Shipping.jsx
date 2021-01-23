@@ -1,20 +1,16 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 
 import FormField from "../../../components/FormField";
 import Button from "../../../components/Button";
 import { cityOptions } from "../../../static";
 import { setShippingAddress } from "../../../actions/auth";
-import { setAlert } from "../../../actions/alert";
 
 const Shipping = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  let location = useLocation();
-  const path = location.pathname;
 
-  const { errors } = useSelector((state) => state.errors);
   const { guest } = useSelector((state) => state.guest);
   const { user } = useSelector((state) => state.auth);
   const guest_shippingAddress = JSON.parse(
@@ -28,13 +24,13 @@ const Shipping = () => {
     : guest.guest_shippingAddress;
 
   const [userInfo, setUserInfo] = useState({
-    shipping_firstName: shippingAddress?.shipping_firstName || "",
-    shipping_lastName: shippingAddress?.shipping_lastName || "",
-    shipping_companyName: shippingAddress?.shipping_companyName || "",
-    shipping_houseAddress: shippingAddress?.shipping_houseAddress || "",
-    shipping_apartmentAddress: shippingAddress?.shipping_apartmentAddress || "",
-    shipping_postalCode: shippingAddress?.shipping_postalCode || "",
-    shipping_townCity: shippingAddress?.shipping_apartmentAddress || "Manila",
+    shipping_firstName: shippingAddress?.shipping_firstName ?? "",
+    shipping_lastName: shippingAddress?.shipping_lastName ?? "",
+    shipping_companyName: shippingAddress?.shipping_companyName ?? "",
+    shipping_houseAddress: shippingAddress?.shipping_houseAddress ?? "",
+    shipping_apartmentAddress: shippingAddress?.shipping_apartmentAddress ?? "",
+    shipping_postalCode: shippingAddress?.shipping_postalCode ?? "",
+    shipping_townCity: shippingAddress?.shipping_apartmentAddress ?? "Manila",
   });
 
   const onChange = (e) => {
@@ -48,16 +44,6 @@ const Shipping = () => {
     e.preventDefault();
     dispatch(setShippingAddress(userInfo, navigate));
   };
-
-  // const isFirstRun = useRef(true);
-  // useEffect(() => {
-  //   if (isFirstRun.current) {
-  //     isFirstRun.current = false;
-  //     return;
-  //   }
-  //   errors === null &&
-  //     dispatch(setAlert("shipping address successfuly updated"));
-  // }, [handleSubmit]);
 
   return (
     <form
@@ -98,7 +84,7 @@ const Shipping = () => {
         name={"shipping_houseAddress"}
         label={"House address"}
         placeholder={"House number and street name"}
-        minlength="20"
+        minLength="20"
         required
       />{" "}
       <FormField

@@ -136,7 +136,7 @@ const Stripe = ({ checkout, orderNotes }) => {
           </div>
         )}
 
-        <div className="text-gray-400">
+        <div className={`${terms ? "text-green-700" : "text-gray-400"}`}>
           <input type="checkbox" id="terms" onClick={() => setTerms(!terms)} />
           <label htmlFor="terms">
             &nbsp;&nbsp;I have read and agree to the website{" "}

@@ -37,7 +37,7 @@ export const createMenu = (menuData) => async (dispatch) => {
 
 export const deleteMenu = (id) => async (dispatch) => {
   try {
-    const { data } = await API.delete(`menus/${id}`);
+    const { data } = await API.delete(`/menus/${id}`);
     console.log(data);
     dispatch({ type: DELETE_MENU, payload: id });
     dispatch(setAlert("item successfully deleted"));
@@ -48,7 +48,7 @@ export const deleteMenu = (id) => async (dispatch) => {
 
 export const updateMenu = (id, menu) => async (dispatch) => {
   try {
-    const { data } = await API.patch(`menus/${id}`, menu);
+    const { data } = await API.patch(`/menus/${id}`, menu);
 
     dispatch({ type: UPDATE_MENU, payload: data });
     dispatch(setAlert("item successfully edited"));
@@ -58,5 +58,3 @@ export const updateMenu = (id, menu) => async (dispatch) => {
     console.log(error);
   }
 };
-
-// export const likeMenu = (id) => axios.patch(`${url}/${id}/likeMenu`);
