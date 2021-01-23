@@ -65,9 +65,6 @@ module.exports = {
       maxWidth: {
         "14-rem": "14rem",
       },
-      translate: {
-        "<40": "-40%",
-      },
       rotate: {
         270: "270deg",
       },

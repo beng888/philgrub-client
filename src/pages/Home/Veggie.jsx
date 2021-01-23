@@ -33,7 +33,7 @@ const Veggie = () => {
       </Link>
 
       <div
-        className={` h-dscreen w-dscreen bg-fourth absolute overflow-hidden delay-out-1 rounded-full transform  md:-translate-y-1/4 -z-10 md:translate-x-<40 ${
+        className={` h-dscreen w-dscreen bg-fourth absolute overflow-hidden delay-out-1 rounded-full transform  md:-translate-y-1/4 -z-10 md:-translate-x-1/3 md:mr-96 ${
           inView ? "translate-x-36 scale-100 opacity-100" : "opacity-0 scale-75"
         }`}
       />
