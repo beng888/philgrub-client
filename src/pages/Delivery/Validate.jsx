@@ -33,7 +33,7 @@ const Validate = ({ setNotFound, delivery }) => {
       </p>
       <div className="flex flex-col sm:flex-row items-center gap-12 py-8">
         <input
-          value={validation}
+          value={validation ?? ""}
           onChange={(e) => setValidation(e.target.value)}
           type="text"
           placeholder="validate"

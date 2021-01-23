@@ -27,8 +27,12 @@ const Cart = () => {
       {loading ? (
         <Loader />
       ) : (
-        <div className="pt-52 pb-28 grid px-8  xl:px-40">
-          <div className={`${cart.length > 0 ? "success" : "warning"}`}>
+        <div className="pt-52 pb-28 grid px-4  xl:px-40">
+          <div
+            className={`${
+              cart.length > 0 ? "success" : "warning"
+            } flex flex-col sm:flex-row`}
+          >
             {cart.length > 0 ? (
               <div>
                 <i className="fas fa-check-circle" />

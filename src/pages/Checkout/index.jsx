@@ -77,7 +77,7 @@ const Checkout = () => {
                   maxLength="15"
                   required
                 />
-                <div className="text-right">
+                <div className="text-center sm:text-right">
                   <Button btn="btn-secondary">Apply Coupon</Button>
                 </div>
               </form>{" "}

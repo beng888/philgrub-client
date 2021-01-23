@@ -142,7 +142,9 @@ const Billing = () => {
         label={"Email address"}
         required
       />
-      <Button btn="btn-primary">SAVE ADDRESS</Button>
+      <div className="text-center sm:text-left">
+        <Button btn="btn-primary">SAVE ADDRESS</Button>
+      </div>
     </form>
   );
 };

@@ -114,8 +114,10 @@ const Shipping = () => {
         maxLength="4"
         title="4 digit code"
         required
-      />
-      <Button btn="btn-primary">SAVE ADDRESS</Button>
+      />{" "}
+      <div className="text-center sm:text-left">
+        <Button btn="btn-primary">SAVE ADDRESS</Button>
+      </div>
     </form>
   );
 };

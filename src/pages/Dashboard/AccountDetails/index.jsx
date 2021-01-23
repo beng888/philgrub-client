@@ -113,7 +113,9 @@ const AccountDetails = () => {
         />
         {error && <span className="text-red-500 font-semibold ">{error}</span>}{" "}
         <br />
-        <Button btn="btn-primary">SAVE CHANGES</Button>
+        <div className="text-center sm:text-left">
+          <Button btn="btn-primary">SAVE CHANGES</Button>
+        </div>
       </form>
     </div>
   );

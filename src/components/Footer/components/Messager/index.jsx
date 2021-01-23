@@ -14,7 +14,7 @@ const Messager = () => {
     >
       <div
         onClick={() => setOpen(true)}
-        className="center-content h-16 w-16 p-2"
+        className="center-content h-12 w-12 sm:h-16 sm:w-16 p-2"
       >
         <i className="far fa-comment gray" />
         <i className="far fa-comment-dots gray absolute opacity-0 group-hover:opacity-100" />

@@ -66,7 +66,10 @@ const CategoryItem = () => {
               <span className="font-normal">{grub.mayContain}</span>{" "}
             </h5>
           )}
-          <Link to="/categories/our-solutions">
+          <Link
+            to="/categories/our-solutions"
+            className="self-center sm:self-start"
+          >
             <Button btn="btn-primary">SKIP TO THE MENU</Button>
           </Link>
         </div>

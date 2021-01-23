@@ -25,7 +25,7 @@ const AddToCart = ({ cart }) => {
     navigate("/cart");
   };
   return (
-    <div className="bg-third  grid md:grid-cols-2 items-center px-20 py-8  text-gray-50 tracking-widest ">
+    <div className="bg-third  grid md:grid-cols-2 items-center px-4 sm:px-20 py-8  text-gray-50 tracking-widest ">
       <div className="text-xs leading-6">
         <b className="text-black">CHOOSE A PURCHASE PLAN:</b> <br />
         <input type="radio" id="one-time" name="order" />
@@ -48,14 +48,14 @@ const AddToCart = ({ cart }) => {
           Weekly order
         </label>
       </div>
-      <h5 className="flex justify-between  md:ml-auto gap-12">
+      <h5 className="flex justify-between  md:ml-auto portrait:gap-6 lg:gap-12">
         <div>{isNaN(total) ? "0" : newTotal}.00 ₱</div> <b>|</b>
         <button
           onClick={addToCartHandler}
           disabled={cart.length === 0}
           className={`${
-            cart.length === 0 && "cursor-not-allowed text-opacity-30 "
-          } tracking-wider text-white`}
+            cart.length === 0 && "cursor-not-allowed text-opacity-30"
+          } tracking-wider text-white pr-12`}
         >
           ADD TO CART
         </button>

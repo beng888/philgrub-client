@@ -22,6 +22,10 @@ const Delivery = () => {
               id={d.location}
               className="absolute  h-28 transform -translate-y-full"
             />
+            <span
+              id={d.postal}
+              className="absolute  h-28 transform -translate-y-full"
+            />
             <p className="p-3">{d.location}</p>
             <p className="p-3 bg-black bg-opacity-25">{d.postal}</p>
           </div>

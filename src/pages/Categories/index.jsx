@@ -11,7 +11,7 @@ const Categories = () => {
   const itemPath = path.split("/")[3] && "/" + path.split("/")[3];
   return (
     <div>
-      <h5 className="flex text-green-600  pt-40 mb-12 px-8 sm:px-12 xl:px-32">
+      <h5 className="flex text-green-600  pt-40 mb-12 px-8 sm:px-12 xl:px-32 flex-wrap justify-center sm:justify-start">
         <Link to="/" className="trans-out hover:text-yellow-800">
           Home
         </Link>{" "}
