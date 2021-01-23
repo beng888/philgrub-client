@@ -19,6 +19,8 @@ import {
   SET_GUEST_BILLING_ADDRESS,
   SET_SHIPPING_ADDRESS,
   SET_GUEST_SHIPPING_ADDRESS,
+  SET_LOADING,
+  SET_UPDATING,
 } from "./actionTypes";
 
 const config = { headers: { "Content-Type": "application/json" } };
@@ -98,12 +100,14 @@ export const checkUserAction = (message) => async (dispatch) => {
 //************ ADDRESSES **********//
 //=================================//
 
-export const setBillingAddress = (userInfo) => async (dispatch) => {
+export const setBillingAddress = (userInfo, navigate) => async (dispatch) => {
   console.log(userInfo);
 
   try {
     const res = await API.post("/auth/billingAddress", userInfo);
     dispatch({ type: SET_BILLING_ADDRESS, payload: userInfo });
+    navigate("/dashboard/addresses");
+    dispatch(setAlert("billing address successfuly updated"));
 
     console.log(res);
   } catch (error) {
@@ -111,15 +115,20 @@ export const setBillingAddress = (userInfo) => async (dispatch) => {
     dispatch({ type: SET_ERRORS, payload: error.response.data.errors });
     localStorage.setItem("guest_billingAddress", JSON.stringify(userInfo));
     console.log(error.response.data.errors);
+    if (error.response.data.errors === undefined) {
+      dispatch(setAlert("billing address successfuly updated"));
+    }
   }
 };
 
-export const setShippingAddress = (userInfo) => async (dispatch) => {
+export const setShippingAddress = (userInfo, navigate) => async (dispatch) => {
   console.log(userInfo);
 
   try {
     const res = await API.post("/auth/shippingAddress", userInfo);
     dispatch({ type: SET_SHIPPING_ADDRESS, payload: userInfo });
+    navigate("/dashboard/addresses");
+    dispatch(setAlert("shipping address successfuly updated"));
 
     console.log(res);
   } catch (error) {
@@ -127,6 +136,9 @@ export const setShippingAddress = (userInfo) => async (dispatch) => {
     dispatch({ type: SET_ERRORS, payload: error.response.data.errors });
     localStorage.setItem("guest_shippingAddress", JSON.stringify(userInfo));
     console.log(error.response.data.errors);
+    if (error.response.data.errors === undefined) {
+      dispatch(setAlert("shipping address successfuly updated"));
+    }
   }
 };
 
@@ -135,6 +147,7 @@ export const setShippingAddress = (userInfo) => async (dispatch) => {
 //=================================//
 
 export const addToCart = (cart) => async (dispatch) => {
+  dispatch({ type: SET_LOADING, payload: true });
   try {
     const res = await API.post("/auth/addToCart", cart);
     dispatch({ type: ADD_TO_CART, payload: cart });
@@ -145,9 +158,11 @@ export const addToCart = (cart) => async (dispatch) => {
     localStorage.setItem("guest_cart", JSON.stringify(cart));
     dispatch({ type: SET_GUEST_CART, payload: cart });
   }
+  dispatch({ type: SET_LOADING, payload: false });
 };
 
 export const updateCart = (cart) => async (dispatch) => {
+  dispatch({ type: SET_UPDATING, payload: true });
   try {
     const res = await API.post("/auth/updateCart", cart);
     dispatch({ type: UPDATE_CART, payload: cart });
@@ -158,9 +173,12 @@ export const updateCart = (cart) => async (dispatch) => {
     localStorage.setItem("guest_cart", JSON.stringify(cart));
     dispatch({ type: SET_GUEST_CART, payload: cart });
   }
+  dispatch({ type: SET_UPDATING, payload: false });
 };
 
 export const clearCart = () => async (dispatch) => {
+  dispatch({ type: SET_LOADING, payload: true });
+
   try {
     const res = await API.post("/auth/clearCart");
     dispatch({ type: CLEAR_CART });
@@ -170,6 +188,7 @@ export const clearCart = () => async (dispatch) => {
     localStorage.removeItem("guest_cart");
     dispatch({ type: CLEAR_GUEST_CART });
   }
+  dispatch({ type: SET_LOADING, payload: false });
 };
 
 //=================================//
@@ -177,6 +196,7 @@ export const clearCart = () => async (dispatch) => {
 //=================================//
 
 export const proceedToCheckout = (checkout) => async (dispatch) => {
+  dispatch({ type: SET_LOADING, payload: true });
   try {
     const res = await API.post("/auth/checkout", checkout);
     dispatch({ type: CHECK_OUT, payload: checkout });
@@ -186,4 +206,5 @@ export const proceedToCheckout = (checkout) => async (dispatch) => {
     dispatch({ type: SET_GUEST_CHECKOUT, payload: checkout });
     localStorage.setItem("guest_checkout", JSON.stringify(checkout));
   }
+  dispatch({ type: SET_LOADING, payload: false });
 };

@@ -1,6 +1,7 @@
 import React from "react";
 
 import Button from "../../../components/Button";
+import Updating from "../../../components/Loader/Updating";
 
 const Total = ({
   newTotal,
@@ -8,9 +9,10 @@ const Total = ({
   checkoutHandler,
   updatedCart,
   forUpdate,
+  updating,
 }) => {
   return (
-    <div className="flex flex-col md:flex-row md:gap-x-20 text-primary tracking-widest justify-between mt-4">
+    <div className="flex flex-col md:flex-row md:gap-x-20 text-primary tracking-widest justify-between mt-4 ">
       <div className="flex flex-col gap-3 sm:gap-0 sm:flex-row h-fit sm:max-w-md justify-between text-xs text-gray-300 items-center sm:border">
         <input
           type="text"
@@ -21,7 +23,7 @@ const Total = ({
           APPLY COUPON
         </button>
       </div>
-      <div className="flex flex-col flex-grow md:max-w-xl">
+      <div className="flex flex-col flex-grow md:max-w-xl relative">
         {" "}
         <div className="md:w-fit md:ml-auto">
           <Button
@@ -50,11 +52,12 @@ const Total = ({
         <Button
           wFull
           btn="btn-primary-full"
-          disabled={updatedCart.length === 0}
+          disabled={updatedCart.length === 0 || updating}
           onClick={() => checkoutHandler()}
         >
           <p className="whitespace-nowrap"> PROCEED TO CHECKOUT</p>
-        </Button>
+        </Button>{" "}
+        {updating && <Updating />}
       </div>
     </div>
   );

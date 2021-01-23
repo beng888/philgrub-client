@@ -27,28 +27,14 @@ const Shipping = () => {
     ? guest_shippingAddress
     : guest.guest_shippingAddress;
 
-  const isFirstRun = useRef(true);
-  useEffect(() => {
-    if (isFirstRun.current) {
-      isFirstRun.current = false;
-      return;
-    }
-    errors === null &&
-      path === "/dashboard/addresses/shipping" &&
-      navigate("/dashboard/addresses");
-    dispatch(setAlert("shipping address successfuly updated"));
-  }, [shippingAddress]);
-
   const [userInfo, setUserInfo] = useState({
-    shipping_firstName: shippingAddress?.shipping_firstName,
-    shipping_lastName: shippingAddress?.shipping_lastName,
-    shipping_companyName: shippingAddress?.shipping_companyName,
-    shipping_houseAddress: shippingAddress?.shipping_houseAddress,
-    shipping_apartmentAddress: shippingAddress?.shipping_apartmentAddress,
-    shipping_postalCode: shippingAddress?.shipping_postalCode,
-    shipping_townCity: shippingAddress
-      ? shippingAddress?.shipping_apartmentAddress
-      : "Manila",
+    shipping_firstName: shippingAddress?.shipping_firstName || "",
+    shipping_lastName: shippingAddress?.shipping_lastName || "",
+    shipping_companyName: shippingAddress?.shipping_companyName || "",
+    shipping_houseAddress: shippingAddress?.shipping_houseAddress || "",
+    shipping_apartmentAddress: shippingAddress?.shipping_apartmentAddress || "",
+    shipping_postalCode: shippingAddress?.shipping_postalCode || "",
+    shipping_townCity: shippingAddress?.shipping_apartmentAddress || "Manila",
   });
 
   const onChange = (e) => {
@@ -60,8 +46,18 @@ const Shipping = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(setShippingAddress(userInfo));
+    dispatch(setShippingAddress(userInfo, navigate));
   };
+
+  // const isFirstRun = useRef(true);
+  // useEffect(() => {
+  //   if (isFirstRun.current) {
+  //     isFirstRun.current = false;
+  //     return;
+  //   }
+  //   errors === null &&
+  //     dispatch(setAlert("shipping address successfuly updated"));
+  // }, [handleSubmit]);
 
   return (
     <form
@@ -102,6 +98,7 @@ const Shipping = () => {
         name={"shipping_houseAddress"}
         label={"House address"}
         placeholder={"House number and street name"}
+        minlength="20"
         required
       />{" "}
       <FormField
@@ -127,6 +124,9 @@ const Shipping = () => {
         type={"number"}
         name={"shipping_postalCode"}
         label={"Postal code"}
+        pattern="[0-9]{4}"
+        maxLength="4"
+        title="4 digit code"
         required
       />
       <Button btn="btn-primary">SAVE ADDRESS</Button>

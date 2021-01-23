@@ -1,6 +1,6 @@
 import { setAlert } from "../actions/alert";
 import API from "../utils/API";
-import { CLEAR_CART, CLEAR_GUEST_CART } from "./actionTypes";
+import { CLEAR_CART, CLEAR_GUEST_CART, SET_UPDATING } from "./actionTypes";
 
 export const stripePay = (
   token,
@@ -10,6 +10,7 @@ export const stripePay = (
   saveCard,
   orders
 ) => async (dispatch) => {
+  dispatch({ type: SET_UPDATING, payload: true });
   try {
     const options = { headers: { "Content-Type": "application/json" } };
     const body = { token, checkoutTotal, description, checkout, orders };
@@ -27,4 +28,5 @@ export const stripePay = (
     error.response.statusText === "Not Found" &&
       dispatch(setAlert("Payment successfuly made"));
   }
+  dispatch({ type: SET_UPDATING, payload: false });
 };

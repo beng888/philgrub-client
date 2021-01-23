@@ -31,7 +31,11 @@ const CategoryList = () => {
             {" "}
             <Link to={l.link}>
               {" "}
-              <img src={l.img} alt={l.img} />{" "}
+              <img
+                src={l.img}
+                alt={l.img}
+                className="h-80 w-full object-cover"
+              />{" "}
               <h3 className="py-4">{l.title}</h3>
             </Link>
             <Link to={l.link}>

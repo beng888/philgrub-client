@@ -1,15 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
+
 const Alert = () => {
   const { alert } = useSelector((state) => state.alert);
-
-  const [isAnimated, setIsAnimated] = useState(false);
-
-  useEffect(() => {
-    setIsAnimated(true);
-  }, [alert]);
-
-  console.log(alert);
 
   return (
     <div

@@ -7,23 +7,20 @@ import Button from "../../components/Button";
 const SubscribeForm = ({ status, message, subscribe }) => {
   const [email, setEmail] = useState("");
 
-  const onChange = (e) => {
-    setEmail(e.target.value);
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log("subscribing");
     subscribe(email);
   };
 
   return (
-    <form onSubmit={handleSubmit} className="w-full">
+    <form onSubmit={(e) => handleSubmit(e)} className="w-full">
       <h1 className="text-green-800 transition-spacing duration-700">
         Subscribe to PhilGrub
       </h1>
       <FormField
         value={email}
-        onChange={onChange}
+        onChange={(e) => setEmail(e.target.value)}
         type={"email"}
         name={"email address"}
         required
@@ -56,14 +53,7 @@ const SubscribeForm = ({ status, message, subscribe }) => {
         </span>
         .
       </p>
-      <Button
-        btn="btn-primary"
-        onClick={(e) => {
-          e.preventDefault();
-        }}
-      >
-        Subscribe
-      </Button>
+      <Button btn="btn-primary">Subscribe</Button>
     </form>
   );
 };

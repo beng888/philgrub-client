@@ -29,7 +29,7 @@ const Header = ({ price, discountedPrice, setCheckout, newTotal }) => {
           </p>
           <div className="flex gap-4">
             <div className="hidden md:block">
-              <img src="https://picsum.photos/100" alt="pic" />
+              <img src="/images/category1.jpg" alt="pic" className="h-24" />
             </div>
             <div className="text-right md:text-left flex flex-col justify-around">
               <p>Our solutions</p>

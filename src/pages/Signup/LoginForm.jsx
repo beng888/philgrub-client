@@ -119,7 +119,7 @@ const LoginForm = () => {
       >
         <div
           onClick={switchLog}
-          className="hov-link-text2 flex portrait:justify-end"
+          className="hov-link-text2 flex justify-center portrait:justify-end"
         >
           {!signin ? "No account yet?" : "Got an account?"}
         </div>

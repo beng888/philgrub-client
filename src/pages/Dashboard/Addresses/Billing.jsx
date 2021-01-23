@@ -28,30 +28,16 @@ const Billing = () => {
     ? guest_billingAddress
     : guest.guest_billingAddress;
 
-  const isFirstRun = useRef(true);
-  useEffect(() => {
-    if (isFirstRun.current) {
-      isFirstRun.current = false;
-      return;
-    }
-    errors === null &&
-      path === "/dashboard/addresses/billing" &&
-      navigate("/dashboard/addresses");
-    dispatch(setAlert("billing address successfuly updated"));
-  }, [billingAddress]);
-
   const [userInfo, setUserInfo] = useState({
-    billing_firstName: billingAddress?.billing_firstName,
-    billing_lastName: billingAddress?.billing_lastName,
-    billing_companyName: billingAddress?.billing_companyName,
-    billing_houseAddress: billingAddress?.billing_houseAddress,
-    billing_apartmentAddress: billingAddress?.billing_apartmentAddress,
-    billing_postalCode: billingAddress?.billing_postalCode,
-    billing_phone: billingAddress?.billing_phone,
-    billing_email: billingAddress?.billing_email,
-    billing_townCity: billingAddress
-      ? billingAddress?.billing_apartmentAddress
-      : "Manila",
+    billing_firstName: billingAddress?.billing_firstName || "",
+    billing_lastName: billingAddress?.billing_lastName || "",
+    billing_companyName: billingAddress?.billing_companyName || "",
+    billing_houseAddress: billingAddress?.billing_houseAddress || "",
+    billing_apartmentAddress: billingAddress?.billing_apartmentAddress || "",
+    billing_postalCode: billingAddress?.billing_postalCode || "",
+    billing_phone: billingAddress?.billing_phone || "",
+    billing_email: billingAddress?.billing_email || "",
+    billing_townCity: billingAddress?.billing_apartmentAddress || "Manila",
   });
 
   const onChange = (e) => {
@@ -66,9 +52,18 @@ const Billing = () => {
     dispatch({ type: SET_ERRORS, payload: null });
     console.log(errors);
 
-    dispatch(setBillingAddress(userInfo));
-    // errors !== null && navigate("/dashboard/addresses");
+    dispatch(setBillingAddress(userInfo, navigate));
   };
+
+  // const isFirstRun = useRef(true);
+  // useEffect(() => {
+  //   if (isFirstRun.current) {
+  //     isFirstRun.current = false;
+  //     return;
+  //   }
+  //   errors === null &&
+  //     dispatch(setAlert("billing address successfuly updated"));
+  // }, [handleSubmit]);
   return (
     <form
       autoComplete="off"
@@ -108,6 +103,7 @@ const Billing = () => {
         name={"billing_houseAddress"}
         label={"House address"}
         placeholder={"House number and street name"}
+        minlength="20"
         required
       />{" "}
       <FormField
@@ -130,19 +126,28 @@ const Billing = () => {
       <FormField
         value={userInfo.billing_postalCode}
         onChange={onChange}
-        type={"number"}
+        type={"tel"}
         name={"billing_postalCode"}
         label={"Postal code"}
+        pattern="[0-9]{4}"
+        maxLength="4"
+        title="4 digit code"
         required
       />
       <FormField
         value={userInfo.billing_phone}
         onChange={onChange}
-        type={"number"}
+        type={"tel"}
         name={"billing_phone"}
         label={"phone"}
+        pattern="[0]{1}[9]{1}[0-9]{9}"
+        maxLength="11"
+        title="cellphone number"
         required
       />
+      <span className="text-xs transform -translate-y-5 ">
+        Format: <b className="text-gray-500 trac">09#########</b>
+      </span>
       <FormField
         value={userInfo.billing_email}
         onChange={onChange}

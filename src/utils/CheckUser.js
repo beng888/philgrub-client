@@ -7,7 +7,6 @@ import { getDelivery } from "../actions/delivery";
 
 const CheckUser = () => {
   const { user } = useSelector((state) => state.auth);
-  const delivery = useSelector((state) => state.delivery);
 
   const dispatch = useDispatch();
   useEffect(() => {

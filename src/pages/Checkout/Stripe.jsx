@@ -5,6 +5,7 @@ import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import Button from "../../components/Button";
 import { setAlert } from "../../actions/alert";
 import { stripePay } from "../../actions/stripe";
+import Updating from "../../components/Loader/Updating";
 
 const Stripe = ({ checkout, orderNotes }) => {
   const { checkoutTotal } = checkout;
@@ -13,6 +14,7 @@ const Stripe = ({ checkout, orderNotes }) => {
   const stripe = useStripe();
   const elements = useElements();
   const dispatch = useDispatch();
+  const { updating } = useSelector((state) => state.variables);
 
   const { guest } = useSelector((state) => state.guest);
   const { user } = useSelector((state) => state.auth);
@@ -99,7 +101,8 @@ const Stripe = ({ checkout, orderNotes }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="relative">
+      {updating && <Updating />}
       <div className="flex flex-col gap-y-4">
         <div className="flex justify-between items-end text-tertiary font-semibold">
           <p>Card Number</p>
@@ -142,7 +145,9 @@ const Stripe = ({ checkout, orderNotes }) => {
         </div>
       </div>
       <div className="mt-4 ml-auto text-right">
-        <Button btn="btn-primary">PLACE ORDER</Button>
+        <Button btn="btn-primary" disabled={updating}>
+          PLACE ORDER
+        </Button>
       </div>
     </form>
   );

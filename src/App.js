@@ -11,15 +11,14 @@ import Alert from "./components/Alert";
 import ScrollToTop from "./utils/ScrollToTop";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import * as R from "./pages";
 import Loader from "./components/Loader";
+import * as R from "./pages";
 //* R = RoutePage
 
 const App = () => {
   // console.log(process.env.REACT_APP_MAILCHIMP_URL);
   // console.log(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
   console.log(process.env.REACT_APP_URL);
-  console.log(process.env.NODE_ENV);
 
   return (
     <Router>

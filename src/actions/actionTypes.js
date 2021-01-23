@@ -57,3 +57,5 @@ export const REMOVE_ALERT = "remove_alert";
 //////////* VARIABLES *\\\\\\\\\\
 
 export const SET_CURRENT_ID = "set_current_id";
+export const SET_LOADING = "set_loading";
+export const SET_UPDATING = "set_updating";

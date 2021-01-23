@@ -50,7 +50,15 @@ const AddToCart = ({ cart }) => {
       </div>
       <h5 className="flex justify-between  md:ml-auto gap-12">
         <div>{isNaN(total) ? "0" : newTotal}.00 ₱</div> <b>|</b>
-        <button onClick={addToCartHandler}>ADD TO CART</button>
+        <button
+          onClick={addToCartHandler}
+          disabled={cart.length === 0}
+          className={`${
+            cart.length === 0 && "cursor-not-allowed text-opacity-30 "
+          } tracking-wider text-white`}
+        >
+          ADD TO CART
+        </button>
       </h5>
     </div>
   );

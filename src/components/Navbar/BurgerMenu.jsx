@@ -1,7 +1,7 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
-import { iconlinks, navLinks, socials } from "../../static";
+import { navLinks, socials } from "../../static";
 import Logo from "./Logo";
 import NavIcons from "./NavIcons";
 import logo from "../../images/logo.svg";

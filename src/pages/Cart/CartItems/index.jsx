@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import Header from "./Header";
 import Body from "./Body";
 import Total from "./Total";
 import { updateCart, proceedToCheckout } from "../../../actions/auth";
+import Updating from "../../../components/Loader/Updating";
 
 const CartItems = ({ cart }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   let price = cart.reduce((total, obj) => obj.price + total, 0);
   let total = cart.reduce((total, obj) => obj.price * obj.quantity + total, 0);
+  const { updating } = useSelector((state) => state.variables);
 
   const discountedPrice =
     price &&
@@ -90,22 +92,25 @@ const CartItems = ({ cart }) => {
 
   return (
     <>
-      <Header
-        price={price}
-        discountedPrice={discountedPrice}
-        setCheckout={setCheckout}
-        newTotal={newTotal}
-      />
-      <div className="flex flex-col text-primary font-semibold ">
-        {newCart.map((item) => (
-          <Body
-            key={item._id}
-            item={item}
-            cart={newCart}
-            setUpdatedCart={setUpdatedCart}
-            setForUpdate={setForUpdate}
-          />
-        ))}
+      <div className="relative">
+        <Header
+          price={price}
+          discountedPrice={discountedPrice}
+          setCheckout={setCheckout}
+          newTotal={newTotal}
+        />
+        <div className="flex flex-col text-primary font-semibold ">
+          {newCart.map((item) => (
+            <Body
+              key={item._id}
+              item={item}
+              cart={newCart}
+              setUpdatedCart={setUpdatedCart}
+              setForUpdate={setForUpdate}
+            />
+          ))}
+        </div>
+        {updating && <Updating />}
       </div>
       <Total
         addToCartHandler={addToCartHandler}
@@ -113,6 +118,7 @@ const CartItems = ({ cart }) => {
         forUpdate={forUpdate}
         updatedCart={updatedCart}
         checkoutHandler={checkoutHandler}
+        updating={updating}
       />
     </>
   );
