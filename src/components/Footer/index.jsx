@@ -7,7 +7,7 @@ import Messager from "./components/Messager/";
 
 const Footer = () => {
   return (
-    <div className="w-full py-20 px-4 xl:px-20 flex flex-col gap-12 bg-gray-300 relative overflow-hidden">
+    <div className="w-full py-20 px-4 xl:px-20 flex flex-col gap-12 bg-gray-300 relative overflow-hidden z-50">
       <div className="flex flex-col lg:flex-row justify-between gap-8 lg:gap-20">
         <div className="flex flex-col gap-8 whitespace-nowrap">
           {navLinks.slice(2, 6).map((m, i) => (

@@ -32,7 +32,7 @@ const Form = ({ setOpen }) => {
     dispatch(createMessage(messageData, setMessageData));
   };
   return (
-    <>
+    <div className="max-h-screen  overflow-auto w-screen max-w-min">
       <div className="flex justify-center p-3 bg-white rounded-t-lg">
         <p>Leave a message</p>
       </div>
@@ -99,7 +99,7 @@ const Form = ({ setOpen }) => {
         Powered by <i className="far fa-comment-alt text-xs text-yellow-800" />{" "}
         <b>BENG</b>
       </div>
-    </>
+    </div>
   );
 };
 
